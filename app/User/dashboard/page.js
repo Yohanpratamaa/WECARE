@@ -56,10 +56,10 @@ const page = () => {
           </div>
           <div>Ankle Pain Consultation</div>
           <div className="inline-flex space-x-3 mt-2">
-            <button className="w-1/2 bg-blue-100 rounded-xl p-2 text-blue-500 font-bold">
+            <button className="w-1/2 bg-blue-100 rounded-xl p-2 text-blue-500 font-bold shadow-md">
               Accept
             </button>
-            <button className="w-1/2 bg-red-100 rounded-xl p-2 text-red-500 font-bold">
+            <button className="w-1/2 bg-red-100 rounded-xl p-2 text-red-500 font-bold shadow-md">
               Cancel
             </button>
           </div>
