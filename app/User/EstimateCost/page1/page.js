@@ -16,7 +16,7 @@ const pemeriksaanList = [
 
 const CheckboxPemeriksaan = ({ label, checked, onChange }) => (
   <div
-    className={`mt-2 w-full py-3 px-4 border rounded-lg shadow-sm transition-colors ${
+    className={`mt-2 w-full py-3 px-4 border rounded-lg transition-colors ${
       checked ? "border-green-500 bg-[#4DB648] opacity-5" : "border-gray-300"
     }`}
   >
@@ -63,13 +63,13 @@ const Page = () => {
         <div className="font-semibold text-lg">Isi Form Untuk Melanjutkan</div>
       </div>
       <div className="w-full h-[2px] bg-gray-300"></div>
-      <form className="px-6 py-4 space-y-4">
+      <form className="px-6 py-4 space-y-4 flex flex-col min-h-[90vh]">
         <label htmlFor="keluhan" className="font-semibold">
           Keluhan Utama
         </label>
         <textarea
           id="keluhan"
-          className="mt-2 w-full h-20 px-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+          className="mt-2 w-full h-20 px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-green-500 focus:border-green-500"
           placeholder="Masukkan keluhan utama"
           required
         />
@@ -85,8 +85,10 @@ const Page = () => {
           />
         ))}
 
+        <div className="flex-1"></div>
+
         <button
-          className="bg-[#4DB648] w-full h-15 mt-[8rem] hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
+          className="bg-[#4DB648] w-full h-15 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
           onClick={() => router.push("/User/EstimateCost/page2")}
         >
           Selanjutnya

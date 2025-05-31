@@ -1,6 +1,6 @@
 import React from "react";
 
-const page = () => {
+const Page = () => {
   return (
     <div className="relative px-5 pt-[2rem] flex flex-col text-left">
       <div className="font-semibold text-xl py-3">2/6 Langkah</div>
@@ -28,9 +28,7 @@ const page = () => {
         </label>
 
         <label className="block mt-5">
-          <span className="text-gray-700 font-semibold">
-            Tipe Rumah Sakit
-          </span>
+          <span className="text-gray-700 font-semibold">Tipe Rumah Sakit</span>
           <input
             type="text"
             className="mt-2 block w-full px-3 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
@@ -52,7 +50,9 @@ const page = () => {
         </label>
 
         <label className="block mt-5">
-          <span className="text-gray-700 font-semibold">Nama Penanggung Jawab Rumah Sakit</span>
+          <span className="text-gray-700 font-semibold">
+            Nama Penanggung Jawab Rumah Sakit
+          </span>
           <input
             type="text"
             className="mt-2 block w-full px-3 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
@@ -78,4 +78,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

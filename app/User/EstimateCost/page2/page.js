@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import Select from "react-select";
+import { useRouter } from "next/navigation";
 
 const InputField = ({ id, label, placeholder }) => (
   <div>
@@ -29,7 +29,6 @@ const customSelectStyles = {
     ...base,
     borderRadius: "0.75rem",
     borderColor: state.isFocused ? "#4DB648" : "#d1d5db",
-    boxShadow: state.isFocused ? "0 0 0 2px #4DB64833" : base.boxShadow,
     minHeight: "60px",
     paddingLeft: "2px",
     paddingRight: "2px",
@@ -78,7 +77,7 @@ const SelectField = ({ id, label, options }) => (
 
 const opsiBayar = ["BPJS", "Pribadi", "Asuransi"];
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
 
   return (
@@ -94,7 +93,7 @@ const page = () => {
         <div className="font-semibold text-lg">Isi Form Untuk Melanjutkan</div>
       </div>
       <div className="w-full h-[2px] bg-gray-300"></div>
-      <form className="px-6 py-5 space-y-4">
+      <form className="px-6 py-5 space-y-4 flex flex-col min-h-[90vh]">
         <SelectField
           id="province"
           label="Jenis Pembayaran"
@@ -116,10 +115,12 @@ const page = () => {
             Tidak, Saya Nonaktif
           </button>
         </div>
+        <div className="flex-1"></div> {/* Spacer agar button ke bawah */}
         <button
           type="submit"
-          className="w-full rounded-xl mt-50 bg-[#4DB648] shadow-md py-4 font-semibold text-white"
+          className="w-full rounded-xl bg-[#4DB648] py-4 font-semibold text-white"
           onClick={() => router.push("/User/EstimateCost/page1")}
+          style={{ marginTop: "auto" }}
         >
           Selanjutnya
         </button>
@@ -128,4 +129,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <div className="px-6 h-1/2 bg-[#f7f7f7]">
@@ -25,7 +25,10 @@ const page = () => {
 
         {/* Menu */}
         <div className="grid grid-rows-2 gap-3 text-left pt-5">
-          <div className="inline-flex w-full h-full bg-white rounded-xl p-6 shadow-md" onClick={() => window.location.href = "/User/EstimateCost"}>
+          <div
+            className="inline-flex w-full h-full bg-white rounded-xl p-6"
+            onClick={() => (window.location.href = "/User/EstimateCost")}
+          >
             <div className="text-xl font-[120%]">
               Cari Rumah Sakit & Cek Biaya
             </div>
@@ -38,7 +41,7 @@ const page = () => {
             />
           </div>
 
-          <div className="inline-flex w-full h-full bg-white rounded-xl p-6 shadow-md">
+          <div className="inline-flex w-full h-full bg-white rounded-xl p-6">
             <div className="text-xl font-[120%]">Pembiayaan Darurat</div>
             <Image
               src={"/amico12.png"}
@@ -55,14 +58,14 @@ const page = () => {
       <div className="w-full h-1/2 mt-5 rounded-xl p-5 mb-[6rem]">
         <div className="text-xl font-semibold"> Jadwal Saya</div>
 
-        <div className="inline-flex items-center w-full bg-gray-100 h-11 mt-5 shadow-md rounded-full space-x-9 px-7 text-gray-500 font-[150%]">
+        <div className="inline-flex items-center w-full bg-gray-100 h-11 mt-5 rounded-full space-x-9 px-7 text-gray-500 font-[150%]">
           <div className="w-1/3">Upcoming</div>
           <div className="w-1/3">Completed</div>
           <div className="">Canceled</div>
         </div>
 
         {/* Card Jadwal */}
-        <div className="flex flex-col w-[250px] h-[280px] rounded-3xl border border-gray-300 mt-8 shadow-md">
+        <div className="flex flex-col w-[250px] h-[280px] rounded-3xl border border-gray-300 mt-8">
           <div className="bg-image relative">
             <Image
               src={"/cardImage.png"}
@@ -72,12 +75,7 @@ const page = () => {
             />
             <div className="absolute inline-flex items-center space-x-2 top-0 right-0 w-[52px] h-[22px] rounded-tr-xl bg-[#4DB648] px-[1px]">
               <div>
-                <Image
-                  src={"/lokasi.png"}
-                  alt="Clock"
-                  width={10}
-                  height={15}
-                />
+                <Image src={"/lokasi.png"} alt="Clock" width={10} height={15} />
               </div>
               <div className="text-[10px] text-white">3.1 km</div>
             </div>
@@ -121,4 +119,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

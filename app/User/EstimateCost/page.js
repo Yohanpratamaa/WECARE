@@ -12,7 +12,7 @@ const InputField = ({ id, label, placeholder }) => (
     <input
       id={id}
       type="text"
-      className="mt-2 block w-full px-3 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+      className="mt-2 block w-full px-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-green-500 focus:border-green-500"
       placeholder={placeholder}
       required
     />
@@ -29,7 +29,6 @@ const customSelectStyles = {
     ...base,
     borderRadius: "0.75rem",
     borderColor: state.isFocused ? "#4DB648" : "#d1d5db",
-    boxShadow: state.isFocused ? "0 0 0 2px #4DB64833" : base.boxShadow,
     minHeight: "48px",
     paddingLeft: "2px",
     paddingRight: "2px",
@@ -57,7 +56,6 @@ const customSelectStyles = {
       color: "#fff",
     },
   }),
-
 };
 
 const SelectField = ({ id, label, options }) => (
@@ -100,7 +98,7 @@ const Page = () => {
       </div>
       <div className="w-full h-[2px] bg-gray-300"></div>
 
-      <form className="relative px-6 py-4 w-full max-w-md mx-auto space-y-4">
+      <form className="relative px-6 py-4 w-full max-w-md mx-auto space-y-4 flex flex-col min-h-[90vh]">
         <InputField id="name" label="Nama" placeholder="Masukkan Nama Kamu" />
         <InputField id="nik" label="NIK" placeholder="Masukkan NIK Anda" />
         <SelectField id="province" label="Provinsi" options={provinsiOptions} />
@@ -111,10 +109,10 @@ const Page = () => {
           options={kecamatanOptions}
         />
         <SelectField id="codepos" label="Kode Pos" options={kodeposOptions} />
-
+        <div className="flex-1"></div>
         <button
           type="submit"
-          className="w-full rounded-lg mt-36 bg-[#4DB648] shadow-md py-3 font-semibold text-white"
+          className="w-full rounded-lg bg-[#4DB648] py-3 font-semibold text-white"
         >
           Selanjutnya
         </button>
