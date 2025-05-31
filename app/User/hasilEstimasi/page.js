@@ -48,7 +48,7 @@ const Page = () => {
           </div>
         </div>
         <div className="mt-2 mb-4">
-          <div className="text-2xl font-bold leading-tight">
+          <div className="font-satoshi text-2xl font-bold leading-tight">
             Kami menemukan 5 Rumah Sakit <br />
             yang sesuai dengan keluhan dan kebutuhanmu
           </div>
