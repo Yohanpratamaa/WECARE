@@ -1,12 +1,85 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import Select from "react-select";
+import { useRouter } from "next/navigation";
+
+const customSelectStyles = {
+  container: (base) => ({
+    ...base,
+    width: "100%",
+    maxWidth: "100%",
+  }),
+  control: (base) => ({
+    ...base,
+    borderRadius: "0.75rem",
+    minHeight: "60px",
+    paddingLeft: "2px",
+    paddingRight: "2px",
+    borderColor: "#d1d5db",
+    boxShadow: "none",
+    backgroundColor: "#fff",
+    "&:hover": {
+      borderColor: "#d1d5db",
+    },
+  }),
+  menu: (base) => ({
+    ...base,
+    width: "100%",
+    maxWidth: "100%",
+    zIndex: 20,
+    backgroundColor: "#fff",
+  }),
+  option: (base) => ({
+    ...base,
+    backgroundColor: "#fff",
+    color: "#222",
+    "&:active": {
+      backgroundColor: "#fff",
+      color: "#222",
+    },
+  }),
+};
+
+const SelectField = ({ id, label, options, value, onChange }) => (
+  <div className="w-full">
+    <label htmlFor={id} className="font-semibold mb-2 block text-lg">
+      {label}
+    </label>
+    <Select
+      inputId={id}
+      options={options.map((opt) => ({ value: opt, label: opt }))}
+      placeholder={`Pilih ${label}`}
+      className="mt-2"
+      classNamePrefix="react-select"
+      styles={customSelectStyles}
+      components={{ IndicatorSeparator: () => null }}
+      value={value}
+      onChange={onChange}
+    />
+  </div>
+);
+
+const provinsiOptions = ["Jawa Barat", "Jawa Tengah", "Jawa Timur"];
+const kotaOptions = ["Bandung", "Semarang", "Surabaya"];
+const kecamatanOptions = ["Kec. 1", "Kec. 2", "Kec. 3"];
+const kodeposOptions = ["40111", "50211", "60211"];
 
 const Page = () => {
+  const router = useRouter();
+  const [provinsi, setProvinsi] = useState(null);
+  const [kota, setKota] = useState(null);
+  const [kecamatan, setKecamatan] = useState(null);
+  const [kodepos, setKodepos] = useState(null);
+
   return (
     <div className="min-h-screen bg-white flex flex-col px-4 pt-4 pb-2">
       {/* Header */}
       <div className="flex items-center mt-2 mb-6">
-        <button className="p-2 -ml-2" aria-label="Back">
+        <button
+          className="p-2 -ml-2"
+          aria-label="Back"
+          onClick={() => router.back()}
+        >
           <svg width="28" height="28" fill="none">
             <path
               d="M18 7l-6 7 6 7"
@@ -24,70 +97,34 @@ const Page = () => {
       <div className="w-full h-[1px] bg-gray-200 mb-4"></div>
       {/* Form */}
       <form className="flex flex-col gap-4 flex-1">
-        <div>
-          <label className="block font-semibold mb-2 text-lg">Provinsi</label>
-          <div className="relative">
-            <select
-              className="appearance-none w-full border border-gray-200 rounded-xl px-4 py-4 bg-white text-gray-400 text-base focus:outline-none focus:ring-0"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Pilih Provinsi tempat tinggal
-              </option>
-              {/* Tambahkan opsi provinsi di sini */}
-            </select>
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-              ▼
-            </span>
-          </div>
-        </div>
-        <div>
-          <label className="block font-semibold mb-2 text-lg">Kota</label>
-          <div className="relative">
-            <select
-              className="appearance-none w-full border border-gray-200 rounded-xl px-4 py-4 bg-white text-gray-400 text-base focus:outline-none focus:ring-0"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Pilih Kota Asal
-              </option>
-              {/* Tambahkan opsi kota di sini */}
-            </select>
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-              ▼
-            </span>
-          </div>
-        </div>
-        <div>
-          <label className="block font-semibold mb-2 text-lg">Kecamatan</label>
-          <div className="relative">
-            <select
-              className="appearance-none w-full border border-gray-200 rounded-xl px-4 py-4 bg-white text-gray-400 text-base focus:outline-none focus:ring-0"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Pilih Kota Asal
-              </option>
-              {/* Tambahkan opsi kecamatan di sini */}
-            </select>
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-              ▼
-            </span>
-          </div>
-        </div>
-        <div>
-          <label className="block font-semibold mb-2 text-lg">Kode Pos</label>
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Masukkan Kode Pos"
-              className="w-full border border-gray-200 rounded-xl px-4 py-4 bg-white text-gray-400 text-base focus:outline-none focus:ring-0 pr-10"
-            />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-              ▼
-            </span>
-          </div>
-        </div>
+        <SelectField
+          id="provinsi"
+          label="Provinsi"
+          options={provinsiOptions}
+          value={provinsi}
+          onChange={setProvinsi}
+        />
+        <SelectField
+          id="kota"
+          label="Kota"
+          options={kotaOptions}
+          value={kota}
+          onChange={setKota}
+        />
+        <SelectField
+          id="kecamatan"
+          label="Kecamatan"
+          options={kecamatanOptions}
+          value={kecamatan}
+          onChange={setKecamatan}
+        />
+        <SelectField
+          id="kodepos"
+          label="Kode Pos"
+          options={kodeposOptions}
+          value={kodepos}
+          onChange={setKodepos}
+        />
       </form>
       {/* Button */}
       <div className="mt-8 mb-4">
