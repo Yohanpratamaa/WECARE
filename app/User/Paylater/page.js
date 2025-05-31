@@ -1,9 +1,11 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
-  // const router = useRouter();
+  const router = useRouter();
+
   return (
     <div className="flex flex-col bg-[#f7f7f7]">
       <div className="inline-flex p-6 space-x-4 items-center h-full relative">
@@ -12,7 +14,7 @@ const Page = () => {
           alt="Logo"
           width={20}
           height={50}
-          // onClick={() => router.push("/User/dashboard")}
+          onClick={() => router.push("/User/dashboard")}
           className="cursor-pointer"
         />
         <div className="font-semibold text-lg">Skema Pembiayaan Darurat</div>
@@ -115,13 +117,14 @@ const Page = () => {
 
         <button
           type="submit"
+          onClick={() => router.push("/User/Paylater/page1")}
           className="w-full rounded-2xl bg-[#4DB648] py-5 font-semibold text-white shadow-b-md"
         >
           Selanjutnya
         </button>
 
         <button
-          type="submit"
+          onClick={() => router.push("/User/dashboard")}
           className="w-full mt-2 rounded-2xl bg-white border border-gray-200 py-5 font-semibold text-black shadow-b-md"
         >
           Ingatkan Saya Nanti

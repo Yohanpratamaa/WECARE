@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const features = [
   {
@@ -17,6 +19,7 @@ const features = [
 ];
 
 const Page = () => {
+  const router = useRouter();
   return (
     <div className="flex flex-col min-h-screen bg-[#f7f7f7] px-4 py-6">
       <div className="flex justify-center">
@@ -70,7 +73,10 @@ const Page = () => {
         </div>
       </div>
       <div className="mt-auto flex justify-center">
-        <button className="w-full max-w-md bg-[#4DB648] hover:bg-green-600 text-white font-semibold rounded-xl py-4 mt-6 shadow">
+        <button
+          onClick={() => router.push("/User/Paylater/page2")}
+          className="w-full max-w-md bg-[#4DB648] hover:bg-green-600 text-white font-semibold rounded-xl py-4 mt-6 shadow"
+        >
           Start Verification
         </button>
       </div>

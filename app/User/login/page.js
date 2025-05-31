@@ -1,7 +1,11 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
+
   return (
     <div className="bg-white h-full flex flex-col justify-between px-4 pt-6 pb-2">
       {/* Logo pojok kanan atas */}
@@ -45,6 +49,7 @@ const Page = () => {
         </div>
         <button
           type="submit"
+          onClick={() => router.push("/User/dashboard")}
           className="w-full bg-gradient-to-r from-[#4DB648] to-green-500 text-white font-semibold rounded-2xl py-4 mt-6 shadow text-lg"
         >
           Login Sekarang

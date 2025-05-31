@@ -111,7 +111,7 @@ const Page = () => {
             type="button"
             className={`w-full h-15 font-semibold py-3 px-4 rounded-lg border ${
               bpjsStatus === "iya"
-                ? "bg-green-700 text-white border-green-700"
+                ? "border-[#4DB648] text-[#4DB648]"
                 : "border-gray-300 hover:bg-green-600 active:bg-green-700"
             }`}
             onClick={() => setBpjsStatus("iya")}
@@ -123,7 +123,7 @@ const Page = () => {
             className={`w-full h-15 font-semibold py-3 border px-4 rounded-lg ${
               bpjsStatus === "tidak"
                 ? "bg-green-100 text-[#4DB648] border-[#4DB648]"
-                : "border-[#4DB648] text-[#4DB648] hover:bg-green-100 active:bg-green-200"
+                : "border-gray-300 text-gray-500 "
             }`}
             onClick={() => setBpjsStatus("tidak")}
           >
@@ -132,9 +132,17 @@ const Page = () => {
         </div>
         <div className="flex-1"></div>
         <button
-          onClick={() => router.push("/User/EstimateCost/page2")}
           type="submit"
           className="w-full rounded-2xl bg-[#4DB648] py-5 font-semibold text-white shadow-b-md"
+          onClick={(e) => {
+            e.preventDefault();
+            if (bpjsStatus === "tidak") {
+              router.push("/User/Paylater");
+            } else if (bpjsStatus === "iya") {
+              router.push("/User/hasilEstimasi");
+            }
+          }}
+          disabled={!bpjsStatus}
         >
           Selanjutnya
         </button>

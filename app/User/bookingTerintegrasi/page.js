@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const hospital = {
   name: "RS Bakti Husada",
@@ -29,6 +30,7 @@ export default function BookingPage() {
     }
     calendar.push(week);
   }
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-[#fafafa] flex flex-col relative">
@@ -137,7 +139,10 @@ export default function BookingPage() {
             </div>
             <button
               className="w-full bg-[#4DB648] text-white text-lg font-semibold rounded-2xl py-4 mb-3"
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                setShowModal(false);
+                router.push("/User/bookingTerintegrasi/page1");
+              }}
             >
               Booking Sekarang
             </button>

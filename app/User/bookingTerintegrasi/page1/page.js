@@ -1,7 +1,10 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function BookingSuccess() {
+
+    const router = useRouter();
   return (
     <div className="min-h-screen flex flex-col justify-between bg-white">
       <div />
@@ -32,8 +35,11 @@ export default function BookingSuccess() {
       </div>
       {/* Tombol Selesai */}
       <div className="px-5 pb-8 pt-4">
-        <button className="w-full bg-[#4DB648] text-white text-lg font-semibold rounded-xl py-3">
-          Selesai
+        <button
+          onClick={() => router.push("/User/dashboard")}
+          className="w-full bg-[#4DB648] text-white text-lg font-semibold rounded-xl py-3"
+        >
+          Kembali ke Homepage
         </button>
       </div>
     </div>

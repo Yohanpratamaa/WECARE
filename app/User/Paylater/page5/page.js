@@ -138,7 +138,7 @@ const Page = () => {
       </div>
       {/* Button */}
       <div className="px-4 pb-8 mt-auto">
-        <button className="w-full bg-gradient-to-r from-[#4DB648] to-green-500 text-white font-semibold rounded-2xl py-4 shadow transition hover:brightness-95 text-lg">
+        <button onClick={() => router.push("/User/Paylater/page6")} className="w-full bg-gradient-to-r from-[#4DB648] to-green-500 text-white font-semibold rounded-2xl py-4 shadow transition hover:brightness-95 text-lg">
           Submit Dokumen
         </button>
       </div>

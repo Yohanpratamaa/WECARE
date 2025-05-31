@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Select from "react-select";
 import { useRouter } from "next/navigation";
 
 const InputField = ({ id, label, placeholder }) => (
@@ -14,58 +13,29 @@ const InputField = ({ id, label, placeholder }) => (
       type="text"
       className="mt-2 block w-full px-3 py-4 border border-gray-300 rounded-xl bg-white"
       placeholder={placeholder}
-      required
     />
   </div>
 );
-
-const customSelectStyles = {
-  container: (base) => ({
-    ...base,
-    width: "100%",
-    maxWidth: "100%",
-  }),
-  control: (base) => ({
-    ...base,
-    borderRadius: "0.75rem",
-    borderColor: "#d1d5db", // selalu abu-abu
-    minHeight: "58px",
-    paddingLeft: "2px",
-    paddingRight: "2px",
-    boxShadow: "none", // tidak ada outline
-  }),
-  menu: (base) => ({
-    ...base,
-    width: "100%",
-    maxWidth: "100%",
-    zIndex: 20,
-    backgroundColor: "#fff", // selalu putih
-  }),
-  option: (base) => ({
-    ...base,
-    backgroundColor: "#fff", // selalu putih
-    color: "#222", // warna teks normal
-    "&:active": {
-      backgroundColor: "#fff", // tetap putih saat klik
-      color: "#222",
-    },
-  }),
-};
 
 const SelectField = ({ id, label, options }) => (
   <div className="w-full">
     <label htmlFor={id} className="font-semibold">
       {label}
     </label>
-    <Select
-      inputId={id}
-      options={options.map((opt) => ({ value: opt, label: opt }))}
-      placeholder={`Pilih ${label}`}
-      className="mt-2"
-      classNamePrefix="react-select"
-      styles={customSelectStyles}
-      components={{ IndicatorSeparator: () => null }}
-    />
+    <select
+      id={id}
+      className="mt-2 block w-full px-3 py-4 border border-gray-300 rounded-xl bg-white"
+      defaultValue=""
+    >
+      <option value="" disabled>
+        Pilih {label}
+      </option>
+      {options.map((opt) => (
+        <option key={opt} value={opt}>
+          {opt}
+        </option>
+      ))}
+    </select>
   </div>
 );
 
@@ -105,7 +75,7 @@ const Page = () => {
         <SelectField id="codepos" label="Kode Pos" options={kodeposOptions} />
         <div className="flex-1"></div>
         <button
-          type="submit"
+          onClick={() => router.push("/User/EstimateCost/page1")}
           className="w-full rounded-2xl bg-[#4DB648] py-5 font-semibold text-white shadow-b-md"
         >
           Selanjutnya

@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
   return (
     <>
       <div className="px-6 h-1/2 bg-[#f7f7f7]">
@@ -41,10 +43,13 @@ const Page = () => {
             />
           </div>
 
-          <div className="inline-flex w-full h-full bg-white rounded-xl p-6">
+          <div
+            className="inline-flex w-full h-full bg-white rounded-xl p-6"
+            onClick={() => router.push("/User/Paylater")}
+          >
             <div className="text-xl font-[120%]">Pembiayaan Darurat</div>
             <Image
-              src={"/amico12.png"}
+              src={"/db.png"}
               alt="Search"
               width={170}
               height={20}

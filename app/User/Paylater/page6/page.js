@@ -1,8 +1,10 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
   return (
     <div className="min-h-screen bg-white flex flex-col justify-between">
       <div />
@@ -31,7 +33,10 @@ const Page = () => {
       </div>
       {/* Button */}
       <div className="px-4 pb-8">
-        <button className="w-full bg-gradient-to-r from-[#4DB648] to-green-500 text-white font-semibold rounded-2xl py-4 shadow transition hover:brightness-95 text-lg">
+        <button
+          onClick={() => router.push("/User/hasilEstimasi")}
+          className="w-full bg-gradient-to-r from-[#4DB648] to-green-500 text-white font-semibold rounded-2xl py-4 shadow transition hover:brightness-95 text-lg"
+        >
           Selesai
         </button>
       </div>

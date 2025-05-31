@@ -131,7 +131,10 @@ const Page = () => {
       </div>
       {/* Button */}
       <div className="px-4 pb-6 mt-auto">
-        <button className="w-full max-w-md bg-[#4DB648] hover:bg-green-600 text-white font-semibold rounded-xl py-4 mt-6 shadow">
+        <button
+          onClick={() => router.push("/User/Paylater/page3")}
+          className="w-full max-w-md bg-[#4DB648] hover:bg-green-600 text-white font-semibold rounded-xl py-4 mt-6 shadow"
+        >
           Start Verification
         </button>
       </div>

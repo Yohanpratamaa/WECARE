@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
+import { useRouter } from "next/navigation";
 
 const hospitals = [
   {
@@ -36,6 +37,8 @@ const Page = () => {
     },
     mode: "free-snap",
   });
+
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-[#fafafa] px-4 pt-6 pb-2">
@@ -122,7 +125,10 @@ const Page = () => {
             Wecare Bot Hadir untuk mengatasi kebingunganmu mengambil keputusan
             untuk pergi berobat ke rumah sakit
           </div>
-          <button className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#4DB648] to-green-500 text-white font-semibold rounded-2xl py-4 shadow text-lg">
+          <button
+            onCLi={() => router.push("/User/chatbot")}
+            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#4DB648] to-green-500 text-white font-semibold rounded-2xl py-4 shadow text-lg"
+          >
             <span>
               {/* Simple robot icon */}
               <Image src="/bot.png" alt="Robot Icon" width={20} height={20} />
@@ -130,6 +136,12 @@ const Page = () => {
             Konsultasi Sekarang
           </button>
         </div>
+        <button
+          onClick={() => router.push("/User/dashboard")}
+          className="w-full border border-[#4DB648] text-[#4DB648] font-semibold rounded-lg py-2 mt-6 shadow text-lg px-10"
+        >
+          Kembali ke Beranda
+        </button>
       </div>
     </div>
   );
