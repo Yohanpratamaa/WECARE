@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 const page = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
@@ -17,13 +17,13 @@ const page = () => {
             </div>
             <div>WECARE</div>
           </div>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {/* <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <Image src={"/menu-line.png"} alt="Menu" width={30} height={30} />
-          </button>
+          </button> */}
         </div>
 
         {/* Drop-down Menu */}
-        {isMenuOpen && (
+        {/* {isMenuOpen && (
           <div className="absolute top-20 left-0 w-full bg-white shadow-lg z-50 px-6 py-4 transition-all duration-300 ease-in-out">
             <input
               type="text"
@@ -48,7 +48,7 @@ const page = () => {
               </li>
             </ul>
           </div>
-        )}
+        )} */}
 
         {/* Selamat Datang */}
         <div className="w-full rounded-3xl bg-white py-3 pb-10 px-5 mt-10">
