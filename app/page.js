@@ -35,7 +35,6 @@ export default function LandingPage() {
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-6 pb-4 bg-white">
         <div className="flex items-center gap-2">
-          <Image src="/logo.png" alt="WeCare Logo" width={36} height={36} />
           <span className="font-bold text-2xl text-[#1A3B34]">Wecare</span>
         </div>
         <button>
@@ -70,38 +69,6 @@ export default function LandingPage() {
         >
           Daftar Sebagai RS/Mitra
         </button>
-      </div>
-
-      {/* Kenapa Harus WeCare */}
-      <div className="px-6 mt-6">
-        <div className="font-bold text-xl mb-4 text-[#232B3B]">
-          Kenapa Harus WeCare
-        </div>
-        <div className="bg-white rounded-2xl p-5 flex flex-col gap-4 items-start mb-6">
-          <div className="font-semibold text-base mb-1">
-            Dapatkan Estimasi dan Chatbot Pintar Untuk Rekomendasi RS
-          </div>
-          <div className="text-gray-400 text-base mb-4">
-            Informasi transparan soal kisaran biaya dan lokasi rumah sakit
-            terbaik.
-          </div>
-          <div className="flex items-center w-full">
-            <button
-              className="bg-gradient-to-r from-[#4DB648] to-green-500 text-white font-semibold rounded-2xl py-3 px-6 shadow text-base"
-              onClick={() => router.push("/User/EstimateCost")}
-            >
-              Coba Sekarang
-            </button>
-            <div className="ml-auto">
-              <Image
-                alt="Chatbot"
-                width={90}
-                height={90}
-                className="object-contain"
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
