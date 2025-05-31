@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Select from "react-select";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,7 @@ const InputField = ({ id, label, placeholder }) => (
     <input
       id={id}
       type="text"
-      className="mt-2 block w-full px-3 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-green-500 focus:border-green-500"
+      className="mt-2 block w-full px-3 py-4 border border-gray-300 rounded-xl"
       placeholder={placeholder}
       required
     />
@@ -25,35 +25,33 @@ const customSelectStyles = {
     width: "100%",
     maxWidth: "100%",
   }),
-  control: (base, state) => ({
+  control: (base) => ({
     ...base,
     borderRadius: "0.75rem",
-    borderColor: state.isFocused ? "#4DB648" : "#d1d5db",
     minHeight: "60px",
     paddingLeft: "2px",
     paddingRight: "2px",
+    borderColor: "#d1d5db", // tetap abu-abu
+    boxShadow: "none", // hilangkan outline
+    backgroundColor: "#fff", // polos putih
     "&:hover": {
-      borderColor: "#4DB648",
+      borderColor: "#d1d5db", // tidak berubah saat hover
     },
-    backgroundColor: state.isFocused ? "#e9fbe9" : "#fff",
   }),
   menu: (base) => ({
     ...base,
     width: "100%",
     maxWidth: "100%",
     zIndex: 20,
+    backgroundColor: "#fff", // polos putih
   }),
-  option: (base, state) => ({
+  option: (base) => ({
     ...base,
-    backgroundColor: state.isSelected
-      ? "#4DB648"
-      : state.isFocused
-      ? "#e9fbe9"
-      : "#fff",
-    color: state.isSelected ? "#fff" : "#222",
+    backgroundColor: "#fff", // polos putih
+    color: "#222",
     "&:active": {
-      backgroundColor: "#4DB648",
-      color: "#fff",
+      backgroundColor: "#fff", // tetap putih saat klik
+      color: "#222",
     },
   }),
 };
@@ -79,6 +77,7 @@ const opsiBayar = ["BPJS", "Pribadi", "Asuransi"];
 
 const Page = () => {
   const router = useRouter();
+  const [bpjsStatus, setBpjsStatus] = useState(null); // null | "iya" | "tidak"
 
   return (
     <div className="flex flex-col">
@@ -101,26 +100,41 @@ const Page = () => {
         />
         <InputField
           id="name"
-          label="Nama"
+          label="Nomor BPJS"
           type="number"
-          placeholder="Masukkan Nama Kamu"
+          placeholder="Masukkan Nomor BPJS Kamu"
           className="h-[60px]"
         />
         <div>Apakah kamu BPJS Aktif?</div>
         <div className="inline-flex space-x-4 w-full">
-          <button className="w-full h-15 hover:bg-green-600 font-semibold py-3 px-4 rounded-lg border border-gray-300">
+          <button
+            type="button"
+            className={`w-full h-15 font-semibold py-3 px-4 rounded-lg border ${
+              bpjsStatus === "iya"
+                ? "bg-green-700 text-white border-green-700"
+                : "border-gray-300 hover:bg-green-600 active:bg-green-700"
+            }`}
+            onClick={() => setBpjsStatus("iya")}
+          >
             Iya
           </button>
-          <button className="w-full h-15 hover:bg-green-600 font-semibold py-3 border px-4 rounded-lg border-[#4DB648] text-[#4DB648]">
+          <button
+            type="button"
+            className={`w-full h-15 font-semibold py-3 border px-4 rounded-lg ${
+              bpjsStatus === "tidak"
+                ? "bg-green-100 text-[#4DB648] border-[#4DB648]"
+                : "border-[#4DB648] text-[#4DB648] hover:bg-green-100 active:bg-green-200"
+            }`}
+            onClick={() => setBpjsStatus("tidak")}
+          >
             Tidak, Saya Nonaktif
           </button>
         </div>
-        <div className="flex-1"></div> {/* Spacer agar button ke bawah */}
+        <div className="flex-1"></div>
         <button
+          onClick={() => router.push("/User/EstimateCost/page2")}
           type="submit"
-          className="w-full rounded-xl bg-[#4DB648] py-4 font-semibold text-white"
-          onClick={() => router.push("/User/EstimateCost/page1")}
-          style={{ marginTop: "auto" }}
+          className="w-full rounded-2xl bg-[#4DB648] py-5 font-semibold text-white shadow-b-md"
         >
           Selanjutnya
         </button>

@@ -16,8 +16,10 @@ const pemeriksaanList = [
 
 const CheckboxPemeriksaan = ({ label, checked, onChange }) => (
   <div
-    className={`mt-2 w-full py-3 px-4 border rounded-lg transition-colors ${
-      checked ? "border-green-500 bg-[#4DB648] opacity-5" : "border-gray-300"
+    className={`mt-2 w-full py-4 px-4 border rounded-lg transition-colors ${
+      checked
+        ? "border-green-500 text-green-500 bg-[#4DB648] opacity-5"
+        : "border-gray-300"
     }`}
   >
     <div className="inline-flex justify-between w-full items-center">
@@ -30,8 +32,7 @@ const CheckboxPemeriksaan = ({ label, checked, onChange }) => (
           checked={checked}
           onChange={onChange}
           className="appearance-none w-5 h-5 border-2 rounded-xl transition-colors duration-200
-            border-gray-300 checked:border-[#4DB648] checked:bg-[#4DB648]
-            focus:outline-none"
+            border-gray-300"
         />
       </label>
     </div>
@@ -69,7 +70,7 @@ const Page = () => {
         </label>
         <textarea
           id="keluhan"
-          className="mt-2 w-full h-20 px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-green-500 focus:border-green-500"
+          className="mt-2 w-full h-20 px-3 py-3 border border-gray-300 rounded-lg "
           placeholder="Masukkan keluhan utama"
           required
         />
@@ -88,8 +89,9 @@ const Page = () => {
         <div className="flex-1"></div>
 
         <button
-          className="bg-[#4DB648] w-full h-15 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
           onClick={() => router.push("/User/EstimateCost/page2")}
+          type="submit"
+          className="w-full rounded-2xl bg-[#4DB648] py-5 font-semibold text-white shadow-b-md"
         >
           Selanjutnya
         </button>
