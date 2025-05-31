@@ -3,9 +3,8 @@ import Link from "next/link";
 // import { useRouter } from "next/navigation";
 
 export default function Home() {
-
   return (
-    <div className="relative px-5 pt-[2rem] flex flex-col text-left">
+    <div className="relative px-5 py-[2rem] h-full flex flex-col text-left">
       <div className="font-semibold text-xl py-3">1/6 Langkah</div>
       <div className="max-w-md w-full shadow-md rounded-full bg-green-100 h-3">
         <div className="w-1/6 bg-green-400 h-3 rounded-full"></div>
