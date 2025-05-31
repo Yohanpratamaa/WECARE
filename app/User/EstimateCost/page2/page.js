@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import Select from "react-select";
 import { useRouter } from "next/navigation";
+import Select from "react-select";
 
 const InputField = ({ id, label, placeholder }) => (
   <div>
@@ -12,7 +12,7 @@ const InputField = ({ id, label, placeholder }) => (
     <input
       id={id}
       type="text"
-      className="mt-2 block w-full px-3 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+      className="mt-2 block w-full px-3 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-green-500 focus:border-green-500"
       placeholder={placeholder}
       required
     />
@@ -30,13 +30,13 @@ const customSelectStyles = {
     borderRadius: "0.75rem",
     borderColor: state.isFocused ? "#4DB648" : "#d1d5db",
     boxShadow: state.isFocused ? "0 0 0 2px #4DB64833" : base.boxShadow,
-    minHeight: "48px",
+    minHeight: "60px",
     paddingLeft: "2px",
     paddingRight: "2px",
     "&:hover": {
       borderColor: "#4DB648",
     },
-    backgroundColor: state.isFocused ? "#e9fbe9" : "#fff", // hijau muda saat focus
+    backgroundColor: state.isFocused ? "#e9fbe9" : "#fff",
   }),
   menu: (base) => ({
     ...base,
@@ -57,7 +57,6 @@ const customSelectStyles = {
       color: "#fff",
     },
   }),
-
 };
 
 const SelectField = ({ id, label, options }) => (
@@ -72,49 +71,55 @@ const SelectField = ({ id, label, options }) => (
       className="mt-2"
       classNamePrefix="react-select"
       styles={customSelectStyles}
-      components={{ IndicatorSeparator: () => null }} // Hilangkan garis kanan
+      components={{ IndicatorSeparator: () => null }}
     />
   </div>
 );
 
-const provinsiOptions = ["Jawa Barat", "Jawa Tengah", "Jawa Timur"];
-const kotaOptions = ["Bandung", "Semarang", "Surabaya"];
-const kecamatanOptions = ["Kec. 1", "Kec. 2", "Kec. 3"];
-const kodeposOptions = ["40111", "50211", "60211"];
+const opsiBayar = ["BPJS", "Pribadi", "Asuransi"];
 
-const Page = () => {
+const page = () => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col bg-[#f7f7f7]">
-      <div className="inline-flex p-6 space-x-4 items-center h-full relative">
+    <div className="flex flex-col">
+      <div className="inline-flex p-6 space-x-4 items-center h-full">
         <Image
           src="/panah.png"
+          onClick={() => router.push("/User/EstimateCost")}
           alt="Logo"
           width={20}
           height={50}
-          onClick={() => router.push("/User/dashboard")}
-          className="cursor-pointer"
         />
         <div className="font-semibold text-lg">Isi Form Untuk Melanjutkan</div>
       </div>
       <div className="w-full h-[2px] bg-gray-300"></div>
-
-      <form className="relative px-6 py-4 w-full max-w-md mx-auto space-y-4">
-        <InputField id="name" label="Nama" placeholder="Masukkan Nama Kamu" />
-        <InputField id="nik" label="NIK" placeholder="Masukkan NIK Anda" />
-        <SelectField id="province" label="Provinsi" options={provinsiOptions} />
-        <SelectField id="city" label="Kota" options={kotaOptions} />
+      <form className="px-6 py-5 space-y-4">
         <SelectField
-          id="kecamatan"
-          label="Kecamatan"
-          options={kecamatanOptions}
+          id="province"
+          label="Jenis Pembayaran"
+          options={opsiBayar}
         />
-        <SelectField id="codepos" label="Kode Pos" options={kodeposOptions} />
-
+        <InputField
+          id="name"
+          label="Nama"
+          type="number"
+          placeholder="Masukkan Nama Kamu"
+          className="h-[60px]"
+        />
+        <div>Apakah kamu BPJS Aktif?</div>
+        <div className="inline-flex space-x-4 w-full">
+          <button className="w-full h-15 hover:bg-green-600 font-semibold py-3 px-4 rounded-lg border border-gray-300">
+            Iya
+          </button>
+          <button className="w-full h-15 hover:bg-green-600 font-semibold py-3 border px-4 rounded-lg border-[#4DB648] text-[#4DB648]">
+            Tidak, Saya Nonaktif
+          </button>
+        </div>
         <button
           type="submit"
-          className="w-full rounded-lg mt-36 bg-[#4DB648] shadow-md py-3 font-semibold text-white"
+          className="w-full rounded-xl mt-50 bg-[#4DB648] shadow-md py-4 font-semibold text-white"
+          onClick={() => router.push("/User/EstimateCost/page1")}
         >
           Selanjutnya
         </button>
@@ -123,4 +128,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;

@@ -1,13 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 // Daftar pemeriksaan (bisa diubah sesuai kebutuhan)
 const pemeriksaanList = [
   "Pemeriksaan Umum",
-  "Pemeriksaan Darah",
-  "Pemeriksaan Urine",
-  "Pemeriksaan Mata",
+  "Konsultasi Dokter Spesialis",
+  "Laboratorium",
+  "Rontgen/Radiologi",
   "Pemeriksaan Gigi",
   "Pemeriksaan Jantung",
   "Pemeriksaan Paru-paru",
@@ -15,19 +16,21 @@ const pemeriksaanList = [
 
 const CheckboxPemeriksaan = ({ label, checked, onChange }) => (
   <div
-    className={`mt-2 w-full py-3 px-4 border rounded-xl shadow-sm transition-colors ${
-      checked ? "border-green-500" : "border-gray-300"
+    className={`mt-2 w-full py-3 px-4 border rounded-lg shadow-sm transition-colors ${
+      checked ? "border-green-500 bg-[#4DB648] opacity-5" : "border-gray-300"
     }`}
   >
     <div className="inline-flex justify-between w-full items-center">
-      <span className="text-gray-400">{label}</span>
+      <span className={checked ? "text-[#4DB648]" : "text-gray-400"}>
+        {label}
+      </span>
       <label className="flex items-center cursor-pointer relative">
         <input
           type="checkbox"
           checked={checked}
           onChange={onChange}
-          className="appearance-none w-5 h-5 border-2 rounded-full transition-colors duration-200
-            border-gray-300 checked:border-green-500 checked:bg-green-500
+          className="appearance-none w-5 h-5 border-2 rounded-xl transition-colors duration-200
+            border-gray-300 checked:border-[#4DB648] checked:bg-[#4DB648]
             focus:outline-none"
         />
       </label>
@@ -45,10 +48,18 @@ const Page = () => {
     setCheckedList((prev) => prev.map((val, i) => (i === idx ? !val : val)));
   };
 
+  const router = useRouter();
+
   return (
     <div className="flex flex-col bg-[#f7f7f7]">
       <div className="inline-flex p-6 space-x-4 items-center h-full">
-        <Image src="/panah.png" alt="Logo" width={20} height={50} />
+        <Image
+          src="/panah.png"
+          onClick={() => router.push("/User/EstimateCost")}
+          alt="Logo"
+          width={20}
+          height={50}
+        />
         <div className="font-semibold text-lg">Isi Form Untuk Melanjutkan</div>
       </div>
       <div className="w-full h-[2px] bg-gray-300"></div>
@@ -74,7 +85,10 @@ const Page = () => {
           />
         ))}
 
-        <button className="bg-[#4DB648] w-full h-13 mt-[6rem] hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg">
+        <button
+          className="bg-[#4DB648] w-full h-15 mt-[8rem] hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg"
+          onClick={() => router.push("/User/EstimateCost/page2")}
+        >
           Selanjutnya
         </button>
       </form>
