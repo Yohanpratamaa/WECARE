@@ -90,7 +90,7 @@ const Page = () => {
             />
           </svg>
         </button>
-        <div className="flex-1 text-[1.6rem] font-bold -ml-8 text-center">
+        <div className="flex-1 text-lg font-[120%] ml-4">
           Isi alamat anda disini
         </div>
       </div>
